@@ -27,6 +27,8 @@ public class LibroRepository {
         return libro;
     }
 
+
+    // VERIFICAR EN CASA CUANDO EL LIBRO NO SE ENCUENTRA, DEVOLVER NULO EN VEZ DE Opcional.isEmpty()
     public Optional<Libro> buscarPorId(int id) {
             return listaLibros.stream().filter(libro -> libro.getId() == id).findFirst();
         }
