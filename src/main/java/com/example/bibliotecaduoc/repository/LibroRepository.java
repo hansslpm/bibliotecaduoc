@@ -50,7 +50,11 @@ public class LibroRepository {
 
         return null;
     }    
-    
+
+    public List<Libro> addListaLibros(List<Libro> listaLibrosAgregar) {
+        listaLibros.addAll(listaLibrosAgregar);
+        return listaLibrosAgregar;
+    }
 
     public void eliminar(int id) {
         listaLibros.removeIf(libro -> libro.getId() == id);
