@@ -15,49 +15,15 @@ public class LibroRepository {
         listaLibros = new ArrayList<>();
     }
 
-
-    public List<Libro> obtenerLibros() {
+    public List<Libro> readAll() {
         return listaLibros;
     }
 
-    public Libro agregarLibro(Libro libro) {
+    public Libro save(Libro libro) {
         listaLibros.add(libro);
         return libro;
     }
 
 
-    // VERIFICAR EN CASA CUANDO EL LIBRO NO SE ENCUENTRA, DEVOLVER NULO EN VEZ DE Opcional.isEmpty()
-    public Libro buscarPorId(int id) {
-            return listaLibros.stream().filter(libro -> libro.getId() == id).findFirst().orElse(null);
-        }
-
-    public Libro buscarPorIsbn(String isbn) {
-            return listaLibros.stream().filter(libro -> libro.getIsbn().equalsIgnoreCase(isbn)).findFirst().orElse(null);
-        }
-
-    public Libro actualizar(Libro nuevoLibro) {
-        Libro libroBuscado = buscarPorId(nuevoLibro.getId());
-
-        if(libroBuscado != null) {
-
-        libroBuscado.setIsbn(nuevoLibro.getIsbn());
-        libroBuscado.setAutor(nuevoLibro.getAutor());
-        libroBuscado.setEditorial(nuevoLibro.getEditorial());
-        libroBuscado.setTitulo(nuevoLibro.getTitulo());
-        libroBuscado.setFechaPublicacion(nuevoLibro.getFechaPublicacion());
-        return libroBuscado;
-    }
-
-        return null;
-    }    
-
-    public List<Libro> addListaLibros(List<Libro> listaLibrosAgregar) {
-        listaLibros.addAll(listaLibrosAgregar);
-        return listaLibrosAgregar;
-    }
-
-    public void eliminar(int id) {
-        listaLibros.removeIf(libro -> libro.getId() == id);
-    }
 }
 
