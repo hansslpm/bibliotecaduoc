@@ -2,8 +2,6 @@ package com.example.bibliotecaduoc.repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.stereotype.Repository;
 
 import com.example.bibliotecaduoc.model.Libro;
@@ -29,25 +27,25 @@ public class LibroRepository {
 
 
     // VERIFICAR EN CASA CUANDO EL LIBRO NO SE ENCUENTRA, DEVOLVER NULO EN VEZ DE Opcional.isEmpty()
-    public Optional<Libro> buscarPorId(int id) {
-            return listaLibros.stream().filter(libro -> libro.getId() == id).findFirst();
+    public Libro buscarPorId(int id) {
+            return listaLibros.stream().filter(libro -> libro.getId() == id).findFirst().orElse(null);
         }
 
-    public Optional<Libro> buscarPorIsbn(String isbn) {
-            return listaLibros.stream().filter(libro -> libro.getIsbn().equalsIgnoreCase(isbn)).findFirst();
+    public Libro buscarPorIsbn(String isbn) {
+            return listaLibros.stream().filter(libro -> libro.getIsbn().equalsIgnoreCase(isbn)).findFirst().orElse(null);
         }
 
     public Libro actualizar(Libro nuevoLibro) {
-        Optional<Libro> libroBuscado = buscarPorId(nuevoLibro.getId());
+        Libro libroBuscado = buscarPorId(nuevoLibro.getId());
 
-        if(libroBuscado.isPresent()) {
+        if(libroBuscado != null) {
 
-        libroBuscado.get().setIsbn(nuevoLibro.getIsbn());
-        libroBuscado.get().setAutor(nuevoLibro.getAutor());
-        libroBuscado.get().setEditorial(nuevoLibro.getEditorial());
-        libroBuscado.get().setTitulo(nuevoLibro.getTitulo());
-        libroBuscado.get().setFechaPublicacion(nuevoLibro.getFechaPublicacion());
-        return libroBuscado.get();
+        libroBuscado.setIsbn(nuevoLibro.getIsbn());
+        libroBuscado.setAutor(nuevoLibro.getAutor());
+        libroBuscado.setEditorial(nuevoLibro.getEditorial());
+        libroBuscado.setTitulo(nuevoLibro.getTitulo());
+        libroBuscado.setFechaPublicacion(nuevoLibro.getFechaPublicacion());
+        return libroBuscado;
     }
 
         return null;

@@ -23,11 +23,11 @@ public class LibroService {
     }
 
     public Libro getLibroId(int id) {
-        return libroRepository.buscarPorId(id).get();
+        return libroRepository.buscarPorId(id);
     }
 
     public Libro getLibroIsbn(String isbn) {
-        return libroRepository.buscarPorIsbn(isbn).get();
+        return libroRepository.buscarPorIsbn(isbn);
     }
 
     public Libro updateLibro(Libro libro) {
