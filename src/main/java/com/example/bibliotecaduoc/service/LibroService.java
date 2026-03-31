@@ -1,6 +1,7 @@
 package com.example.bibliotecaduoc.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,5 +43,24 @@ public class LibroService {
         return libroRepository.save(libro);
     }
 
+    public void fakeData() {
+        libroRepository.fakeData();
+    }
+
+    public Optional<Libro> readById(int id) {
+        return libroRepository.readById(id);
+    }
+
+    public Optional<Libro> readByIsbn(String isbn) {
+        return libroRepository.readByIsbn(isbn);
+    }
+
+    public Libro updateLibro(int id, Libro libro) {
+        return libroRepository.updateLibro(id, libro);
+    }
+
+    public boolean deleteLibro(int id) {
+        return libroRepository.deleteLibro(id);
+    }
     
 }
